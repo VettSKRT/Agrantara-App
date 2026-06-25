@@ -115,7 +115,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             </svg>
           </button>
           <div className="agr-header-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <IcoLeaf />
+            <img src="/logo-icon.png" alt="Agrantara" width={26} height={26} style={{ objectFit: "contain" }} />
             <span style={{ fontSize: 17, fontWeight: 700, color: "#0f172a" }}>Agrantara</span>
           </div>
         </div>

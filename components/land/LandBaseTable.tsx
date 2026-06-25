@@ -160,7 +160,9 @@ export default function LandBaseTable({
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
             <div style={{ position: "relative" }}>
               <Ico.Search />
-              <input style={{ paddingLeft: 36, paddingRight: 14, paddingTop: 9, paddingBottom: 9, borderRadius: 9, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", fontSize: 13, color: "#fff", width: 220, outline: "none" }}
+              <input
+                className="agr-search-white"
+                style={{ paddingLeft: 36, paddingRight: 14, paddingTop: 9, paddingBottom: 9, borderRadius: 9, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", fontSize: 13, color: "#fff", width: 220, outline: "none" }}
                 placeholder="Cari lahan..." value={query} onChange={e => setQuery(e.target.value)} />
             </div>
             <select value={commodityFilter} onChange={e => setCommodityFilter(e.target.value)}

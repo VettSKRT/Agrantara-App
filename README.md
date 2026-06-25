@@ -67,7 +67,6 @@ Aplikasi ini memungkinkan petani untuk mendaftarkan lahan, menggambar batas poly
 | Notifications | Sonner v2 |
 | Auth (Google) | Google Identity Services (GIS) |
 | Backend API | Yii2 REST API (eksternal) |
-| Deployment | Vercel |
 
 ---
 

@@ -172,8 +172,15 @@ const id = params?.id ? String(params.id) : "";
       {/* Page Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <button type="button" onClick={() => router.push("/lands")} style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 12px", borderRadius: 8, border: "1px solid #e2e8f0", background: "#fff", fontSize: 13, color: "#374151", cursor: "pointer" }}>
-            <IconLeft/> Kembali
+          <button
+            type="button"
+            onClick={() => router.push("/lands")}
+            style={{ display: "flex", alignItems: "center", gap: 7, padding: "8px 16px", borderRadius: 10, border: "1.5px solid #a7f3d0", background: "linear-gradient(135deg,#ecfdf5,#f0fdf4)", fontSize: 13, fontWeight: 600, color: "#065f46", cursor: "pointer", transition: "all 0.18s", boxShadow: "0 1px 4px rgba(16,185,129,0.1)" }}
+            onMouseEnter={e => { Object.assign(e.currentTarget.style, { background: "linear-gradient(135deg,#d1fae5,#ecfdf5)", borderColor: "#6ee7b7", boxShadow: "0 3px 10px rgba(16,185,129,0.2)", transform: "translateX(-2px)" }); }}
+            onMouseLeave={e => { Object.assign(e.currentTarget.style, { background: "linear-gradient(135deg,#ecfdf5,#f0fdf4)", borderColor: "#a7f3d0", boxShadow: "0 1px 4px rgba(16,185,129,0.1)", transform: "translateX(0)" }); }}
+          >
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" width="14" height="14" strokeLinecap="round" strokeLinejoin="round"><path d="M10 3L5 8l5 5"/></svg>
+            Kembali
           </button>
           <div>
             <h2 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: "#0f172a" }}>{data.land_name || "Detail Lahan"}</h2>

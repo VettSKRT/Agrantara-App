@@ -267,10 +267,7 @@ export default function RegisterPage() {
       <div className="reg-left">
         <div className="reg-left-inner">
           <div className="reg-logo">
-            <svg width="36" height="36" viewBox="0 0 28 28" fill="none">
-              <rect width="28" height="28" rx="8" fill="#ecfdf5" />
-              <path d="M14 6v16M8 12l6 6 6-6" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img src="/logo-icon.png" alt="Agrantara" width={36} height={36} style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} />
             <span>agrantara</span>
           </div>
           <div className="reg-tagline">
@@ -295,10 +292,7 @@ export default function RegisterPage() {
         <div className="reg-wrap">
           {/* Mobile logo */}
           <div className="reg-mobile-logo">
-            <svg width="30" height="30" viewBox="0 0 28 28" fill="none">
-              <rect width="28" height="28" rx="8" fill="#10b981" />
-              <path d="M14 6v16M8 12l6 6 6-6" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img src="/logo-icon.png" alt="Agrantara" width={30} height={30} style={{ objectFit: "contain" }} />
             <span style={{ fontWeight: 700, fontSize: 20, color: "#064e3b" }}>agrantara</span>
           </div>
 

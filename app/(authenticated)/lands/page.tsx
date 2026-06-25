@@ -150,6 +150,7 @@ export default function MyLandsPage() {
               <input
                 type="text" placeholder="Cari lahan..." value={search}
                 onChange={e => setSearch(e.target.value)}
+                className="agr-search-white"
                 style={{ paddingLeft: 32, paddingRight: 12, paddingTop: 8, paddingBottom: 8, borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", fontSize: 13, color: "#fff", width: 200, outline: "none" }}
               />
             </div>

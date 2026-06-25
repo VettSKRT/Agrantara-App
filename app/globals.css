@@ -148,6 +148,11 @@ body {
   }
 }
 
+/* ── Search input on dark/green header background ────────────── */
+.agr-search-white::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 /* ── Google Sign-In OAuth divider ─────────────────────────────── */
 .agr-oauth-divider {
   display: flex;

@@ -100,16 +100,7 @@ export default function LoginPage() {
       <div className="left">
         <div className="left-inner">
           <div className="logo">
-            <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
-              <rect width="28" height="28" rx="8" fill="#ecfdf5" />
-              <path
-                d="M14 6v16M8 12l6 6 6-6"
-                stroke="#10b981"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <img src="/logo-icon.png" alt="Agrantara" width={32} height={32} style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }} />
             <span>agrantara</span>
           </div>
           <div className="quote">
@@ -124,10 +115,7 @@ export default function LoginPage() {
           <div className="form-header">
             {/* Logo Mobile - Muncul saat layar kecil */}
             <div className="mobile-logo logo">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <rect width="28" height="28" rx="8" fill="#10b981" />
-                <path d="M14 6v16M8 12l6 6 6-6" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img src="/logo-icon.png" alt="Agrantara" width={28} height={28} style={{ objectFit: "contain" }} />
               <span>agrantara</span>
             </div>
             <h1>Selamat Datang</h1>

@@ -95,9 +95,7 @@ export default function Sidebar({ sidebarOpen = false, onClose }: SidebarProps) 
       <aside className={`agr-sidebar${sidebarOpen ? " open" : ""}`}>
         {/* Brand */}
         <div style={{ padding: "22px 18px", borderBottom: "1px solid rgba(16,185,129,0.2)", display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(16,185,129,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <IcoLeaf />
-          </div>
+          <img src="/logo-icon.png" alt="Agrantara" width={38} height={38} style={{ objectFit: "contain", flexShrink: 0, filter: "brightness(0) invert(1)" }} />
           <div>
             <div style={{ color: "#ecfdf5", fontWeight: 700, fontSize: 15, letterSpacing: "0.5px" }}>AGRANTARA</div>
             <div style={{ fontSize: 10, color: "#6ee7b7", fontWeight: 500 }}>Farmer Compliance</div>

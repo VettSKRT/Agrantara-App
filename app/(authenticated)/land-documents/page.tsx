@@ -275,7 +275,7 @@ export default function LandDocumentsPage() {
         const land = lands.find(l => String(l.id) === form.land_id);
         let fileUrl: string | undefined;
         if (formFile.size <= 3 * 1024 * 1024) {
-          fileUrl = await readFileAsDataURL(formFile);
+          try { fileUrl = await readFileAsDataURL(formFile); } catch { /* ignore, save without preview */ }
         }
         const newDoc: LandDoc = {
           id: `local_${Date.now()}`,
@@ -289,9 +289,20 @@ export default function LandDocumentsPage() {
           created_at: new Date().toISOString(),
         };
         const localDocs = loadLocalDocs();
-        saveLocalDocs([...localDocs, newDoc]);
+        try {
+          saveLocalDocs([...localDocs, newDoc]);
+        } catch {
+          // QuotaExceededError — strip file_url from older docs to free space, keep new doc's preview
+          const stripped = localDocs.map(d => ({ ...d, file_url: undefined }));
+          try {
+            saveLocalDocs([...stripped, newDoc]);
+          } catch {
+            newDoc.file_url = undefined;
+            saveLocalDocs([...stripped, newDoc]);
+          }
+        }
         toast.success("Dokumen berhasil disimpan secara lokal.");
-      } catch (localErr) {
+      } catch {
         setFormError("Gagal menyimpan dokumen.");
         setSaving(false);
         return;
