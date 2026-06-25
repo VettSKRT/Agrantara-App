@@ -84,7 +84,7 @@ export default function ContactPage() {
           </button>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 20, alignItems: "start" }}>
+        <div className="agr-contact-layout">
           {/* Form */}
           <div style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 14, padding: "24px 28px" }}>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", marginBottom: 20 }}>Formulir Kontak</h3>
@@ -137,7 +137,7 @@ export default function ContactPage() {
           </div>
 
           {/* Info Panel */}
-          <div style={{ width: 220, display: "flex", flexDirection: "column", gap: 14 }}>
+          <div className="agr-contact-info" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {[
               { icon: "📧", title: "Email", val: "admin@agrantara.id" },
               { icon: "⏱️", title: "Respons", val: "1–2 hari kerja" },

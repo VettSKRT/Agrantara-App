@@ -130,6 +130,24 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+/* ── Contact page layout ──────────────────────────────────────── */
+.agr-contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .agr-contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .agr-contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
 /* ── Google Sign-In OAuth divider ─────────────────────────────── */
 .agr-oauth-divider {
   display: flex;

@@ -225,7 +225,8 @@ export default function LandBaseTable({
             </div>
           ) : (
             <div className="land-fade" style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 14, overflow: "hidden" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+              <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, minWidth: 700 }}>
                 <thead>
                   <tr style={{ background: "linear-gradient(135deg,#064e3b,#047857)" }}>
                     {["#", "Nama Lahan", "Petani", "Komoditas", "Luas"].map(h => (
@@ -249,6 +250,7 @@ export default function LandBaseTable({
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           )}
 

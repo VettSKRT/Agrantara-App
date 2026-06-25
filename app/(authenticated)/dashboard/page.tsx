@@ -157,7 +157,7 @@ export default function DashboardPage() {
           </div>
 
           {/* ── Bottom Row ── */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16 }}>
 
             {/* Bar Chart by Commodity */}
             <div style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 14, padding: 20 }}>
