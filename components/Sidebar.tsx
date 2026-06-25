@@ -57,7 +57,7 @@ const menuGroups = [
     id: "support",
     title: "SUPPORT",
     items: [
-      { name: "Hubungi Admin", path: "/contact", icon: <IcoContact /> },
+      { name: "Contact Admin", path: "/contact", icon: <IcoContact /> },
     ],
   },
 ];
@@ -81,7 +81,13 @@ export default function Sidebar({ sidebarOpen = false, onClose }: SidebarProps) 
 
   const toggleGroup = (id: string) => setOpenGroups(prev => ({ ...prev, [id]: !prev[id] }));
 
-  const handleLogout = () => { localStorage.clear(); router.push("/login"); };
+  const handleLogout = () => {
+    // Only clear auth tokens — keep app data (polygon, planting cycles, land docs, traces)
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userData");
+    router.push("/login");
+  };
   const handleNav    = (path: string) => { router.push(path); if (onClose) onClose(); };
 
   return (

@@ -60,7 +60,10 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const initials    = displayName.split(" ").slice(0, 2).map((w: string) => w[0]).join("").toUpperCase();
 
   function handleLogout() {
-    localStorage.clear();
+    // Only clear auth tokens — keep app data (polygon, planting cycles, land docs, traces)
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userData");
     router.push("/login");
   }
 

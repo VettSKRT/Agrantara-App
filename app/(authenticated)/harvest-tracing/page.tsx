@@ -373,6 +373,43 @@ export default function HarvestTracingPage() {
     localStorage.setItem("harvest_traces", JSON.stringify(updated));
   }
 
+  const [refreshingIdx, setRefreshingIdx] = useState<number | null>(null);
+
+  async function refreshTrace(idx: number) {
+    const existing = savedTraces[idx];
+    const landId = String(existing.land.id);
+    setRefreshingIdx(idx);
+    const token = localStorage.getItem("access_token") || "";
+    const tt = localStorage.getItem("token_type") || "Bearer";
+    const headers = { Authorization: `${tt} ${token}`, Accept: "application/json" };
+    try {
+      const [docsRes, cyclesRes] = await Promise.all([
+        fetch(`/api/proxy/land-document?land_id=${landId}`, { headers }).catch(() => null),
+        fetch(`/api/proxy/planting-cycle?land_id=${landId}`, { headers }).catch(() => null),
+      ]);
+      let docs: LandDoc[] = [];
+      let cycles: Cycle[] = [];
+      if (docsRes?.ok) { const j = await docsRes.json().catch(() => null); docs = j ? (Array.isArray(j) ? j : (j.data || [])) : []; }
+      if (cyclesRes?.ok) { const j = await cyclesRes.json().catch(() => null); cycles = j ? (Array.isArray(j) ? j : (j.data || [])) : []; }
+      if (docs.length === 0) {
+        try { const local: LandDoc[] = JSON.parse(localStorage.getItem("local_land_documents") || "[]"); docs = local.filter(d => String(d.land_id) === landId); } catch {}
+      }
+      if (cycles.length === 0) {
+        try { const local = JSON.parse(localStorage.getItem("local_planting_cycles") || "[]") as Array<Cycle & { land_id: string | number }>; cycles = local.filter(c => String(c.land_id) === landId); } catch {}
+      }
+      const refreshed: TraceDoc = {
+        ...existing,
+        documents: docs.map(d => { const { file_url, ...rest } = d as LandDoc & { file_url?: string }; return rest as LandDoc; }),
+        cycles,
+        createdAt: new Date().toISOString(),
+      };
+      const updated = savedTraces.map((t, i) => i === idx ? refreshed : t);
+      setSavedTraces(updated);
+      try { localStorage.setItem("harvest_traces", JSON.stringify(updated)); } catch {}
+    } catch {}
+    finally { setRefreshingIdx(null); }
+  }
+
   const landOptions = lands.map(l => ({
     value: String(l.id),
     label: l.land_name + (l.commodity_name ? ` (${l.commodity_name})` : ""),
@@ -447,10 +484,17 @@ export default function HarvestTracingPage() {
                     </td>
                     <td style={{ padding: "12px 14px", color: "#64748b", fontSize: 12 }}>{new Date(t.createdAt).toLocaleDateString("id-ID")}</td>
                     <td style={{ padding: "12px 14px" }}>
-                      <div style={{ display: "flex", gap: 6 }}>
+                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                         <button onClick={() => setViewDoc(t)}
                           style={{ display: "flex", alignItems: "center", gap: 4, padding: "6px 10px", border: "1px solid #e2e8f0", background: "#fff", borderRadius: 7, cursor: "pointer", fontSize: 12, color: "#374151" }}>
                           <IcoEye /> Lihat
+                        </button>
+                        <button
+                          onClick={() => refreshTrace(i)}
+                          disabled={refreshingIdx === i}
+                          title="Perbarui dokumen & siklus tanam dari data terkini"
+                          style={{ display: "flex", alignItems: "center", gap: 4, padding: "6px 10px", border: "1px solid #bbf7d0", background: refreshingIdx === i ? "#f0fdf4" : "#f0fdf4", borderRadius: 7, cursor: refreshingIdx === i ? "wait" : "pointer", fontSize: 12, color: "#047857", opacity: refreshingIdx === i ? 0.7 : 1 }}>
+                          {refreshingIdx === i ? "⟳ Memperbarui..." : "⟳ Perbarui"}
                         </button>
                         <button onClick={() => printTrace(t)}
                           style={{ display: "flex", alignItems: "center", gap: 4, padding: "6px 10px", border: "1px solid #bfdbfe", background: "#eff6ff", borderRadius: 7, cursor: "pointer", fontSize: 12, color: "#2563eb" }}>
