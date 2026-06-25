@@ -74,27 +74,27 @@ Aplikasi ini memungkinkan petani untuk mendaftarkan lahan, menggambar batas poly
 ## Struktur Halaman
 
 ```
-/                          → Redirect ke /dashboard
-/login                     → Halaman login (+ Google Sign-In)
-/register                  → Halaman registrasi (+ Google Sign-Up)
-/google-auth               → Halaman verifikasi akun Google
-/dashboard                 → Dashboard utama
-/lands                     → Daftar semua lahan (My Lands)
-/lands/[id]                → Detail lahan + polygon preview
-/lands/[id]/edit           → Edit data lahan
-/lands/create              → Tambah lahan baru
-/land-polygon              → Polygon Mapping (tabel + kartu)
-/land-polygon/manage-polygon?id=X  → Gambar/edit polygon
-/land-polygon/view-polygon?id=X    → Lihat polygon (read-only)
-/land-polygon/eudr-compliance?id=X → Cek kepatuhan EUDR per lahan
-/planting-cycles           → Manajemen siklus tanam
-/activities                → Activity & Cost Logs
-/land-documents            → Dokumen lahan
-/harvest-tracing           → Penelusuran panen
-/certifications            → Sertifikasi keberlanjutan
-/due-diligence             → Due Diligence Reports
-/profile                   → Profil pengguna
-/contact                   → Hubungi Admin
+/                                    → Redirect ke /dashboard
+/login                               → Halaman login (+ Google Sign-In)
+/register                            → Halaman registrasi (+ Google Sign-Up)
+/google-auth                         → Halaman verifikasi akun Google
+/dashboard                           → Dashboard utama
+/lands                               → Daftar semua lahan (My Lands)
+/lands/[id]                          → Detail lahan + polygon preview
+/lands/[id]/edit                     → Edit data lahan
+/lands/create                        → Tambah lahan baru
+/land-polygon                        → Polygon Mapping (tabel + kartu)
+/land-polygon/manage-polygon?id=X    → Gambar/edit polygon
+/land-polygon/view-polygon?id=X      → Lihat polygon (read-only)
+/land-polygon/eudr-compliance?id=X   → Cek kepatuhan EUDR per lahan
+/planting-cycles                     → Manajemen siklus tanam
+/activities                          → Activity & Cost Logs
+/land-documents                      → Dokumen lahan
+/harvest-tracing                     → Penelusuran panen
+/certifications                      → Sertifikasi keberlanjutan
+/due-diligence                       → Due Diligence Reports
+/profile                             → Profil pengguna
+/contact                             → Hubungi Admin
 ```
 
 ---
@@ -151,17 +151,6 @@ npm start
 
 ---
 
-## Deploy ke Vercel
-
-1. Push ke GitHub
-2. Buka [vercel.com](https://vercel.com) → Import repository
-3. Tambahkan environment variables di Settings → Environment Variables:
-   - `NEXT_PUBLIC_GOOGLE_CLIENT_ID`
-4. Deploy otomatis setiap push ke branch `main`
-5. Tambahkan domain Vercel ke Google Cloud Console → Authorized JavaScript origins
-
----
-
 ## Catatan Arsitektur
 
 - **API Proxy** — Semua request ke backend Yii2 diteruskan melalui `/api/proxy/[...path]` untuk menghindari masalah CORS
@@ -170,9 +159,9 @@ npm start
 
 ---
 
-## Lisensi
+## Informasi Tambahan
 
-Proyek ini dibuat sebagai tugas akhir mata kuliah. Hak cipta dilindungi.
+Proyek ini dibuat sebagai Tugas Besar Mata Kuliah Pengembangan UI Lanjut.
 
 ---
 
