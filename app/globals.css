@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variabel Warna Tema Hijau Agrantara (Bisa dipakai di semua halaman) */
+:root {
+  --primary-green: #10b981; /* Emerald 500 */
+  --hover-green: #059669;   /* Emerald 600 */
+  --bg-green: #064e3b;      /* Emerald 950 */
+  --accent-green: #a7f3d0;  /* Emerald 200 */
+  --text-main: #0f172a;     /* Slate 900 */
+  --text-sub: #64748b;      /* Slate 500 */
+  --border-color: #e2e8f0;  /* Slate 200 */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", -apple-system, sans-serif;
+  background: #fff;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animasi Global (Bisa dipake berulang) */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────── */
+.agr-sidebar {
+  width: 258px;
+  background: #064e3b;
+  color: #a7f3d0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(16,185,129,0.15);
+  z-index: 50;
+  transition: transform 0.3s ease;
+}
+@media (max-width: 767px) {
+  .agr-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+  }
+  .agr-sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+  }
+}
+.agr-nav-btn:hover {
+  background: rgba(16,185,129,0.15) !important;
+  color: #ecfdf5 !important;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+.agr-header {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.agr-hamburger {
+  display: none;
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  color: #374151;
+}
+@media (max-width: 767px) {
+  .agr-hamburger { display: flex; align-items: center; justify-content: center; }
+  .agr-header-title { display: none; }
+}
+.agr-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.agr-user-btn:hover {
+  background: #f0fdf4;
+  border-color: #a7f3d0;
+}
+
+/* ── Main content area ────────────────────────────────────────── */
+.agr-main {
+  flex: 1;
+  padding: 24px;
+}
+@media (max-width: 767px) {
+  .agr-main { padding: 14px; }
+}
+
+/* ── Responsive table wrapper ─────────────────────────────────── */
+.agr-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Google Sign-In OAuth divider ─────────────────────────────── */
+.agr-oauth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+.agr-oauth-divider::before,
+.agr-oauth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* ── Modal Balita (dipertahankan global) ─────────────────────── */
+/* Styles untuk Modal Balita (Tetap dipertahankan global) */
+#balita-check-modal { 
+  position: fixed; 
+  inset: 0; 
+  display: none; 
+  z-index: 60; 
+}
+.modal-backdrop { 
+  position: absolute; 
+  inset: 0; 
+  background: rgba(2, 6, 23, 0.4); 
+}
+.modal { 
+  position: relative; 
+  max-width: 520px; 
+  margin: 60px auto; 
+  background: #fff; 
+  border-radius: 12px; 
+  padding: 18px; 
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.2); 
+  z-index: 70; 
+}
